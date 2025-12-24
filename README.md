@@ -17,7 +17,7 @@ htaccess правила написаны под apache 2.2
 
 DB_HOST=localhost
 
-DB_NAME=shipdb
+DB_NAME=Имя вашей базы данных
 
 DB_USER=Ваш логин
 
