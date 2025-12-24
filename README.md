@@ -16,6 +16,9 @@ htaccess правила написаны под apache 2.2
 выше папки сайта нужно создать файл .env и положить внутрь
 
 DB_HOST=localhost
+
 DB_NAME=shipdb
+
 DB_USER=Ваш логин
+
 DB_PASS=Ваш пароль
