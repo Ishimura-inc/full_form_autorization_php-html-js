@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Логин</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+    <div class="welcome">
+        <p>Это приветственная страница</p>
+        <h1>Добро пожаловать</h1>
+        <button id="openModal" class="visible">Авторизация</button>
+        <button id="logoutBtn" class="hidden">Выйти</button>
+    </div>
+
+    <div id="modal" class="authorization">
+        <form class="authorization__form">
+            <div class="authorization__content">
+                <button id="closeModal" class="authorization__close" type="button">×</button>
+
+                <div class="authorization__input-block">
+                    <div class="authorization__header">
+                        <label class="u-padding-left" for="email">Логин</label>
+                        <input type="email" id="loginEmail" placeholder="email" autocomplete="email">
+                    </div>
+                    <div class="authorization__header">
+                        <label class="u-padding-left" for="password">Пароль</label>
+                        <input type="password" id="loginPassword" placeholder="password" autocomplete="password">
+                    </div>
+                </div>
+
+                <div class="authorization__footer">
+                    <button class="form__submit" type="submit">
+                        Войти
+                    </button>
+                    <button id="regFormBtn" class="form__register" type="button">
+                        Регистрация
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div id="modalReg" class="registration">
+        <form class="registration__form">
+            <div class="authorization__content">
+                <button id="closeModalReg" class="registration__close" type="button">×</button>
+
+                <div class="authorization__input-block">
+                    <div class="authorization__header">
+                        <label class="u-padding-left" for="nickname" autocomplete="username">Укажите логин</label>
+                        <input type="text" id="nickname" placeholder="Nickname" autocomplete="username" maxlength="32">
+                    </div>
+                    <div class="authorization__header">
+                        <label class="u-padding-left" for="email">Укажите почту</label>
+                        <input type="email" id="emailReg" placeholder="email" autocomplete="email" maxlength="255">
+                    </div>
+                    <div class="authorization__header">
+                        <label class="u-padding-left" for="password">Придумайте пароль</label>
+                        <input type="password" id="passwordReg" placeholder="password" autocomplete="new-password" maxlength="64">
+                    </div>
+					<div class="authorization__header">
+                        <label class="u-padding-left" for="password">Повторите пароль</label>
+                        <input type="password" id="passwordRegCopy" placeholder="password">
+                    </div>
+                </div>
+
+                <div class="authorization__footer">
+                    <button class="form__register" type="submit">
+                        Зарегистрироваться
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/modal.js"></script>
+<script src="js/login.js"></script>
+<script src="js/register.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>
