@@ -26,8 +26,8 @@ DB_PASS=Ваш пароль
 
 так же нужен .htaccess c содержимым
 
-`
-RewriteEngine On
+
+- RewriteEngine On
 
 ### Разрешаем только GET для конкретных API
 - RewriteCond %{REQUEST_METHOD} GET
@@ -49,5 +49,3 @@ RewriteEngine On
 - RewriteCond %{REQUEST_METHOD} !GET
 - RewriteCond %{REQUEST_METHOD} !POST
 - RewriteRule ^/api/ - [F,L]
-
-`
