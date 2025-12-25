@@ -29,7 +29,11 @@ DB_PASS=Ваш пароль
 RewriteEngine On
 
 RewriteCond %{REQUEST_METHOD} GET
+
 RewriteCond %{REQUEST_URI} ^/api/
+
 RewriteCond %{REQUEST_URI} !/api/csrf\.php$
+
 RewriteCond %{REQUEST_URI} !/api/check_auth\.php$
+
 RewriteRule ^ - [F,L]
