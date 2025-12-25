@@ -30,24 +30,24 @@ DB_PASS=Ваш пароль
 RewriteEngine On
 
 ### Разрешаем только GET для конкретных API
--RewriteCond %{REQUEST_METHOD} GET
--RewriteCond %{REQUEST_URI} ^/api/
--RewriteCond %{REQUEST_URI} !/api/csrf\.php$
--RewriteCond %{REQUEST_URI} !/api/check_auth\.php$
--RewriteCond %{REQUEST_URI} !/api/users/me(/.*)?$
--RewriteRule ^ - [F,L]
+- RewriteCond %{REQUEST_METHOD} GET
+- RewriteCond %{REQUEST_URI} ^/api/
+- RewriteCond %{REQUEST_URI} !/api/csrf\.php$
+- RewriteCond %{REQUEST_URI} !/api/check_auth\.php$
+- RewriteCond %{REQUEST_URI} !/api/users/me(/.*)?$
+- RewriteRule ^ - [F,L]
 
 ### Разрешаем только POST для конкретных API
--RewriteCond %{REQUEST_METHOD} POST
--RewriteCond %{REQUEST_URI} ^/api/
--RewriteCond %{REQUEST_URI} !/api/login\.php$
--RewriteCond %{REQUEST_URI} !/api/register\.php$
--RewriteCond %{REQUEST_URI} !/api/logout\.php$
--RewriteRule ^ - [F,L]
+- RewriteCond %{REQUEST_METHOD} POST
+- RewriteCond %{REQUEST_URI} ^/api/
+- RewriteCond %{REQUEST_URI} !/api/login\.php$
+- RewriteCond %{REQUEST_URI} !/api/register\.php$
+- RewriteCond %{REQUEST_URI} !/api/logout\.php$
+- RewriteRule ^ - [F,L]
 
 ### Блокируем все остальные методы
--RewriteCond %{REQUEST_METHOD} !GET
--RewriteCond %{REQUEST_METHOD} !POST
--RewriteRule ^/api/ - [F,L]
+- RewriteCond %{REQUEST_METHOD} !GET
+- RewriteCond %{REQUEST_METHOD} !POST
+- RewriteRule ^/api/ - [F,L]
 
 `
