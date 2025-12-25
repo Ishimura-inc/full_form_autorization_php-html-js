@@ -49,3 +49,5 @@ DB_PASS=Ваш пароль
 - RewriteCond %{REQUEST_METHOD} !GET
 - RewriteCond %{REQUEST_METHOD} !POST
 - RewriteRule ^/api/ - [F,L]
+
+Соответственно вы должны понимать к каким файлам какой тип запроса должен быть разрешен, при добавлении новых файлов.
