@@ -1,5 +1,6 @@
 const logoutBtn = document.getElementById('logoutBtn');
 const openModal = document.getElementById('openModal');
+const startGameRepair = document.getElementById('startGameRepair');
 
 // Функции показа/скрытия кнопки
 function showLogoutButton() {
@@ -9,6 +10,15 @@ function showLogoutButton() {
     openModal.classList.remove('visible');
     openModal.classList.add('hidden');
     
+    startGameRepair.classList.remove('hidden');
+    startGameRepair.classList.add('visible');
+    
+        // Обновляем никнейм
+    if (typeof window.updateUserState === 'function') {
+        window.updateUserState();
+    }
+    
+    
 }
 
 function hideLogoutButton() {
@@ -17,6 +27,15 @@ function hideLogoutButton() {
     
     openModal.classList.remove('hidden');
     openModal.classList.add('visible');
+    
+    startGameRepair.classList.remove('visible');
+    startGameRepair.classList.add('hidden');
+    
+        // Показываем Гость
+    if (typeof window.updateUserState === 'function') {
+        window.updateUserState();
+    }
+    
 }
 
 // Проверка авторизации на сервере
@@ -67,14 +86,25 @@ window.updateAuthState = updateAuthState;
 // Клик по кнопке выхода
 logoutBtn.addEventListener('click', async () => {
     try {
+        // 1️⃣ Получаем CSRF токен
+        const csrfRes = await fetch('/api/csrf.php', {
+            method: 'GET',
+            credentials: 'include',
+            headers: { 'Accept': 'application/json' }
+        });
+        const { csrf } = await csrfRes.json();
+
+        // 2️⃣ Отправляем POST logout с CSRF
         const res = await fetch('/api/logout.php', {
             method: 'POST',
             credentials: 'include',
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ csrf })
         });
 
         if (res.ok) {
             hideLogoutButton();
+            window.updateUserState();
             alert('Вы вышли из аккаунта');
         } else {
             alert('Ошибка выхода');

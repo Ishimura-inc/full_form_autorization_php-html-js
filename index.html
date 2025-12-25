@@ -5,15 +5,19 @@
 	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Логин</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/start-page.css">
 </head>
-<body>
+<body> 
+<div id="preloader"></div>
 <div class="layout">
     <div class="welcome">
         <p>Это приветственная страница</p>
-        <h1>Добро пожаловать</h1>
-        <button id="openModal" class="visible">Авторизация</button>
+        <h1>Добро пожаловать <span id="nick"></span></h1>
+        <div class="wrapperBtn">
+        <button id="openModal" class="hidden">Авторизация</button>
+        <button id="startGameRepair" class="hidden">Начать игру</button>
         <button id="logoutBtn" class="hidden">Выйти</button>
+        </div>
     </div>
 
     <div id="modal" class="authorization">
@@ -51,8 +55,8 @@
 
                 <div class="authorization__input-block">
                     <div class="authorization__header">
-                        <label class="u-padding-left" for="nickname" autocomplete="username">Укажите логин</label>
-                        <input type="text" id="nickname" placeholder="Nickname" autocomplete="username" maxlength="32">
+                        <label class="u-padding-left" for="nickname" >Укажите логин</label>
+                        <input type="text" id="nickname" placeholder="Nickname" autocomplete="off" maxlength="32">
                     </div>
                     <div class="authorization__header">
                         <label class="u-padding-left" for="email">Укажите почту</label>
@@ -83,6 +87,9 @@
 <script src="js/login.js"></script>
 <script src="js/register.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/user-nikname.js"></script>
+<script src="js/preloader.js"></script>
+
 
 </body>
 </html>

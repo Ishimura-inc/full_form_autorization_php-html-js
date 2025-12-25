@@ -70,6 +70,7 @@ formReg.addEventListener('submit', async (e) => {
 			
             if (typeof window.updateAuthState === 'function') {
                 window.updateAuthState();
+                window.updateUserState();
             }
 			
         } else {

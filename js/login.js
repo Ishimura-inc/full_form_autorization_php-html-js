@@ -30,6 +30,7 @@ formLogin.addEventListener('submit', async (e) => {
             document.getElementById('modal').style.display = 'none';
             alert('Вы успешно вошли!');
             window.updateAuthState();
+            window.updateUserState();
         } else {
             alert(data.message || 'Ошибка входа');
         }

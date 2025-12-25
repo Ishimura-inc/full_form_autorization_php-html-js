@@ -1,8 +1,12 @@
 <?php
 declare(strict_types=1);
+
 require_once __DIR__ . '/../core/auth.php';
 
-requireAuth(); // убедиться, что пользователь авторизован
+requireAuth();
+
+$data = json_decode(file_get_contents('php://input'), true);
+checkCsrf($data['csrf'] ?? '');
 
 session_unset();
 session_destroy();
