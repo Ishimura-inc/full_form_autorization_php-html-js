@@ -41,6 +41,18 @@ $email = trim(mb_strtolower((string)($data['email'] ?? '')));
 $password = $data['password'] ?? '';
 $passwordRepeat  = (string)($data['password_repeat'] ?? '');
 
+/* Rate limit по IP */
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+$stmt = $pdo->prepare('SELECT attempts, last_attempt FROM register_attempts WHERE ip = ?');
+$stmt->execute([$ip]);
+$row = $stmt->fetch();
+if ($row && $row['attempts'] >= 3 && strtotime($row['last_attempt']) > time() - 3600) {
+    http_response_code(429);
+    echo json_encode(['status' => 'error', 'message' => 'Too many registrations from this IP']);
+    exit;
+}
+
+
 /* Валидация */
 if ($nickname === '') {
     http_response_code(400);
@@ -130,6 +142,16 @@ try {
     }
     exit;
 }
+
+/* Обновление таблицы register_attempts */
+if ($row) {
+    $stmt = $pdo->prepare('UPDATE register_attempts SET attempts = attempts + 1, last_attempt = NOW() WHERE ip = ?');
+    $stmt->execute([$ip]);
+} else {
+    $stmt = $pdo->prepare('INSERT INTO register_attempts (ip, attempts, last_attempt) VALUES (?, 1, NOW())');
+    $stmt->execute([$ip]);
+}
+
 
 $userId = (int)$pdo->lastInsertId();
 session_regenerate_id(true);
