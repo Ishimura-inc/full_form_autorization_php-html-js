@@ -17,3 +17,9 @@ CREATE TABLE users (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE register_attempts (
+    ip VARCHAR(45) NOT NULL PRIMARY KEY,
+    attempts INT NOT NULL DEFAULT 0,
+    last_attempt DATETIME NOT NULL
+);
