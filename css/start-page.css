@@ -96,19 +96,10 @@ input {border: 1px solid #ccc; border-radius: 5px; height: 25px;}
 
 #preloader {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #edeef0; /* фон темы сайта */
+    inset: 0;
+    background: #edeef0;
     z-index: 9999;
-}
-
-#preloader {
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#preloader.hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,6 +1,6 @@
 const logoutBtn = document.getElementById('logoutBtn');
 const openModal = document.getElementById('openModal');
-const startGameRepair = document.getElementById('startGameRepair');
+//const startGameRepair = document.getElementById('startGameRepair');
 
 // Функции показа/скрытия кнопки
 function showLogoutButton() {
@@ -10,8 +10,8 @@ function showLogoutButton() {
     openModal.classList.remove('visible');
     openModal.classList.add('hidden');
     
-    startGameRepair.classList.remove('hidden');
-    startGameRepair.classList.add('visible');
+//    startGameRepair.classList.remove('hidden');
+//    startGameRepair.classList.add('visible');
     
         // Обновляем никнейм
     if (typeof window.updateUserState === 'function') {
@@ -28,8 +28,8 @@ function hideLogoutButton() {
     openModal.classList.remove('hidden');
     openModal.classList.add('visible');
     
-    startGameRepair.classList.remove('visible');
-    startGameRepair.classList.add('hidden');
+//    startGameRepair.classList.remove('visible');
+//    startGameRepair.classList.add('hidden');
     
         // Показываем Гость
     if (typeof window.updateUserState === 'function') {

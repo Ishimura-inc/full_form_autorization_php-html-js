@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="css/start-page.css">
 </head>
 <body> 
-<div id="preloader"></div>
+<div id="preloader"><img src="img/loading.gif" alt="Loading..." id="loader-gif"></div>
 <div class="layout">
     <div class="welcome">
         <p>Это приветственная страница</p>
         <h1>Добро пожаловать <span id="nick"></span></h1>
         <div class="wrapperBtn">
         <button id="openModal" class="hidden">Авторизация</button>
-        <button id="startGameRepair" class="hidden">Начать игру</button>
         <button id="logoutBtn" class="hidden">Выйти</button>
         </div>
     </div>
@@ -89,6 +88,7 @@
 <script src="js/auth.js"></script>
 <script src="js/user-nikname.js"></script>
 <script src="js/preloader.js"></script>
+<script src="js/gsap.min.js"></script>
 
 
 </body>

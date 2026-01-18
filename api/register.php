@@ -135,7 +135,7 @@ try {
 } catch (PDOException $e) {
     if ($e->getCode() === '23000') { // duplicate key
         http_response_code(409);
-        echo json_encode(['status' => 'error', 'message' => 'User already exists']);
+        echo json_encode(['status' => 'error', 'message' => 'Никнейм или почта уже заняты']);
     } else {
         http_response_code(500);
         echo json_encode(['status' => 'error', 'message' => 'Internal server error']);
